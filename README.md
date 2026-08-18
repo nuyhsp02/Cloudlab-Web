@@ -1,2 +1,1 @@
-# Cloudlab-Web
-Official Website for CLOUDLAB
+#프로젝트 설명서 - 나중에 깃허브 메인에 뜰 글입니다
