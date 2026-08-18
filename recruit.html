@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 1. 각 파일에 맞게 title을 수정해 주세요 (예: Projects - Cloud Lab) -->
+    <title>서브페이지 - Cloud Lab</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Navbar (공통 영역: 링크 연결 완료) -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Cloud Lab<span>.</span></a>
+
+            <ul class="nav-links" id="nav-links">
+                <li>
+                    <a href="index.html">
+                        <span class="nav-en">Home</span>
+                        <span class="nav-ko">홈</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="project.html">
+                        <span class="nav-en">Projects</span>
+                        <span class="nav-ko">프로젝트</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="members.html">
+                        <span class="nav-en">Members</span>
+                        <span class="nav-ko">멤버</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="recruit.html" class="active">
+                        <span class="nav-en">Recruiting</span>
+                        <span class="nav-ko">리크루팅</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h2 class="hero-title">Recruiting</h2>
+        </div>
+    </header>
+
+    <!-- Main Content (본문 영역: 각 페이지마다 내용이 달라지는 곳) -->
+    <!-- 푸터가 위로 딸려오지 않게 임시로 최소 높이(min-height)를 주었습니다 -->
+    <main style="min-height: 40vh; padding: 80px 20px; text-align: center;">
+        
+        <!-- 2. 나중에 이 부분에 페이지별 내용을 채워 넣으시면 됩니다 -->
+        <h3>이곳은 페이지 본문이 들어갈 자리입니다.</h3>
+        <p>상단 메뉴와 하단 푸터가 잘 고정되어 있는지 확인해 보세요!</p>
+
+    </main>
+
+    <!-- Footer (공통 영역) -->
+    <footer class="footer">
+        <div class="footer-container">
+            
+            <!-- 상단 3단 레이아웃 -->
+            <div class="footer-main-layout">
+                <!-- 좌측 로고 영역 -->
+                <div class="footer-logo-area">
+                    <!-- 추후 여기에 <img> 태그를 사용해 실제 로고를 넣으시면 됩니다 -->
+                    <div class="logo-placeholder">
+                        <h2>Cloud Lab<span>.</span></h2>
+                    </div>
+                </div>
+
+                <!-- 중앙 CONTACT 영역 -->
+                <div class="footer-contact-area">
+                    <h3>CONTACT</h3>
+                    <p>책임교수: <a href="mailto:director@cloudlab.com">director@cloudlab.com</a></p>
+                    <p>대표메일: <a href="mailto:contact@cloudlab.com">contact@cloudlab.com</a></p>
+                </div>
+
+                <!-- 우측 LOCATION 영역 -->
+                <div class="footer-location-area">
+                    <h3>LOCATION</h3>
+                    <p>(00000) 서울특별시 어딘가 무슨구 무슨로 123, Cloud Lab</p>
+                    <p>공학관 101호(교수연구실), 102호(대학원연구실)</p>
+                </div>
+            </div>
+
+            <!-- 하단 카피라이트 영역 (가로줄 포함) -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cloud Lab. All rights reserved.</p>
+            </div>
+            
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
