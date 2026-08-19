@@ -1,28 +1,31 @@
 /* =========================================
    1. 전역 컬러 변수 설정 (로고 기반 색조합)
+   - 사이트 전체의 색상을 여기서 한 번에 관리합니다.
 ========================================= */
 :root {
-    --color-primary: #0056D2; /* 짙은 파랑 (로고 메인) */
-    --color-secondary: #3CA0FF; /* 밝은 하늘색 (로고 서브) */
-    --color-dark-navy: #1A1E2B; /* 로고 텍스트 네이비 */
-    --color-bg-soft: #F4F9FF; /* 연한 배경색 (푸터 등) */
-    --color-text: #4A5568; /* 일반 본문 텍스트 (회색) */
-    --color-border: #cce0f5; /* 경계선 색상 */
+    --color-primary: #0056D2;   /* 메인 테마색: 짙은 파랑 (로고 메인) */
+    --color-secondary: #3CA0FF; /* 포인트 테마색: 밝은 하늘색 (로고 서브) */
+    --color-dark-navy: #1A1E2B; /* 텍스트 강조색: 네이비 (제목 등에 사용) */
+    --color-bg-soft: #F4F9FF;   /* 배경색: 연한 파스텔 블루 (푸터 등) */
+    --color-text: #4A5568;      /* 일반 본문 텍스트 색상 (짙은 회색) */
+    --color-border: #cce0f5;    /* 옅은 경계선 색상 */
 }
 
 /* =========================================
    2. 기본 설정 (Reset)
+   - 모든 페이지의 기본 여백과 폰트를 세팅합니다.
 ========================================= */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
-    padding-top: 70px; /* 네비게이터 고정으로 인한 여백 */
+    padding-top: 70px; /* 상단에 네비게이터가 고정되어 있어, 본문이 가려지지 않게 여백을 줌 */
     color: var(--color-text);
 }
 
 /* =========================================
    3. Navbar (상단 네비게이터) 스타일
+   - 화면을 스크롤해도 항상 맨 위에 고정되는 흰색 메뉴바입니다.
 ========================================= */
 .navbar {
     position: fixed;
@@ -30,38 +33,38 @@ body {
     left: 0;
     width: 100%;
     background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* 옅은 그림자로 입체감 부여 */
+    z-index: 1000; /* 항상 다른 요소들보다 최상단에 위치하도록 설정 */
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1200px; /* 너무 넓어지지 않게 최대 너비 제한 */
     margin: 0 auto;
     padding: 15px 30px;
 }
 
+/* 로고 디자인 */
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
     text-decoration: none;
     color: var(--color-dark-navy);
 }
-
 .logo span {
-    color: var(--color-primary); /* 로고 포인트 색상 적용 */
+    color: var(--color-primary); /* Cloud Lab 뒤의 점(.) 색상 */
 }
 
+/* 메뉴 리스트 정렬 */
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 40px;
+    gap: 40px; /* 메뉴 사이의 간격 */
     margin: 0;
     padding: 0;
 }
-
 .nav-links a {
     display: flex;
     flex-direction: column;
@@ -69,13 +72,13 @@ body {
     text-decoration: none;
 }
 
+/* 영문/국문 메뉴 텍스트 디자인 */
 .nav-en {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--color-dark-navy); /* 네비게이터 영문 색상 적용 */
+    color: var(--color-dark-navy);
     transition: color 0.3s ease;
 }
-
 .nav-ko {
     font-size: 0.75rem;
     font-weight: 400;
@@ -84,24 +87,306 @@ body {
     transition: color 0.3s ease;
 }
 
-/* 마우스 올렸을 때 로고의 파란색으로 변함 */
+/* 메뉴 마우스 오버(Hover) 효과 */
 .nav-links a:hover .nav-en,
 .nav-links a:hover .nav-ko {
     color: var(--color-primary); 
 }
 
-/* 🌟 현재 위치한 페이지 표시 (Active 상태) */
+/* 현재 위치한 페이지 강조 (Active 상태) */
 .nav-links a.active .nav-en,
 .nav-links a.active .nav-ko {
     color: var(--color-primary);
-    font-weight: 700; /* 현재 페이지는 글씨도 살짝 더 굵게 보이게 강조 */
+    font-weight: 700; 
 }
 
 /* =========================================
-   4. Footer (하단 영역) 스타일
+   4. Hero Section (연한 하늘색 배경 & 중앙 정렬)
+========================================= */
+.hero-aurora {
+    position: relative;
+    min-height: 45vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    
+    /* 👇 1. 기존의 딱딱한 선(border-bottom)과 단색 배경 코드를 지우거나 덮어씁니다. */
+    border-bottom: none; 
+
+    /* 👇 2. 위쪽은 하늘색, 아래쪽은 투명하게 스르륵 녹아드는 그라데이션 배경 적용 */
+    background: linear-gradient(to bottom, var(--color-bg-soft) 75%, rgba(244, 249, 255, 0) 100%);
+    
+    /* 👇 3. 경계선 대신, 아래쪽으로 넓고 은은하게 퍼지는 하늘색 그림자를 깔아줍니다 */
+    box-shadow: 0 15px 40px -10px rgba(204, 224, 245, 0.5);
+    
+    overflow: hidden; 
+    z-index: 1;
+    opacity: 0; 
+    animation: bannerReveal 1s ease-out forwards;
+}
+
+/* 배너 배경 전체 등장 애니메이션 */
+@keyframes bannerReveal {
+    0% { opacity: 0; transform: translateY(-40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 텍스트 등장 애니메이션 */
+@keyframes slideDownFade {
+    0% { opacity: 0; transform: translateY(-30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 빛 덩어리(Blob) 공통 스타일 */
+.glow-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px); 
+    z-index: -1; 
+    opacity: 0.5;
+    animation: floatBlob 8s infinite alternate ease-in-out; 
+}
+
+.blob-1 { width: 600px; height: 600px; background: rgba(0, 86, 210, 0.15); top: -150px; right: -100px; animation-delay: 0s; }
+.blob-2 { width: 500px; height: 500px; background: rgba(60, 160, 255, 0.2); bottom: -100px; left: -100px; animation-delay: 2s; }
+.blob-3 { width: 400px; height: 400px; background: rgba(204, 224, 245, 0.4); top: 20%; left: 50%; transform: translateX(-50%); animation-delay: 4s; }
+
+@keyframes floatBlob {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(40px, 30px) scale(1.1); }
+}
+
+/* 텍스트 컨테이너 (완벽한 중앙 정렬) */
+.hero-aurora .hero-content {
+    max-width: 800px;
+    margin: 0 auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;  
+    
+    /* 👇 2. 글자는 배너 배경이 나타나고 0.3초 뒤에 나타나도록 지연(delay) 추가 */
+    opacity: 0;
+    animation: slideDownFade 1s ease-out 0.3s forwards;
+}
+
+/* 메인 타이핑 슬로건 */
+.hero-aurora .hero-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: var(--color-dark-navy);
+    margin: 0 0 15px 0;
+    line-height: 1.3;
+    letter-spacing: -0.03em;
+}
+
+/* 'Cloud-Native' 등에 입혀질 그라데이션 */
+.hero-aurora .text-gradient {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 서브 설명글 */
+.hero-aurora .hero-description {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin: 20px 0 0 0;
+    line-height: 1.6;
+}
+
+/* 타이핑 효과 커서 */
+.cursor {
+    display: inline-block;
+    width: 4px;
+    background-color: var(--color-primary); 
+    margin-left: 5px;
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* 모바일 화면 반응형 */
+@media (max-width: 768px) {
+    .hero-aurora { min-height: 40vh; }
+    .hero-aurora .hero-title { font-size: 2.8rem; }
+    .hero-aurora .hero-description { font-size: 1rem; }
+    .glow-blob { filter: blur(60px); } 
+}
+
+/* =========================================
+   5. Main Content (홈 본문 영역)
+   - 동아리 소개 2단 분할 레이아웃 & 4개 프로젝트 카드
+========================================= */
+.home-main {
+    padding: 80px 20px 100px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- 5-1. 동아리 소개 (2단 분할 레이아웃) --- */
+.intro-section {
+    margin-bottom: 100px;
+}
+
+/* 👇 배너가 완전히 끝난 뒤에 소개글이 등장하도록 시간차(딜레이) 강제 적용 */
+.intro-section.fade-in {
+    transition-delay: 1s !important; 
+}
+
+.intro-container {
+    display: flex;
+    gap: 60px; 
+    align-items: flex-start;
+    max-width: 1100px; 
+    margin: 0 auto;
+}
+
+.intro-container {
+    display: flex;
+    gap: 60px; 
+    align-items: flex-start;
+    max-width: 1100px; 
+    margin: 0 auto;
+}
+
+/* 좌측 타이틀 영역 (40% 차지) */
+.intro-left {
+    flex: 0 0 40%; 
+}
+.intro-left .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-dark-navy);
+    margin: 0;
+    line-height: 1.4;
+    text-align: left;
+    word-break: keep-all; /* 단어가 줄바꿈 시 끊어지지 않도록 보호 */
+    letter-spacing: -0.02em;
+}
+
+/* 우측 상세 설명 본문 (나머지 영역 차지) */
+.intro-right {
+    flex: 1; 
+    text-align: left;
+}
+.intro-right p {
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 1.05rem;
+    color: var(--color-text);
+    line-height: 1.7;
+}
+.intro-right p:last-child {
+    margin-bottom: 0; /* 마지막 문단 아래 여백 제거 */
+}
+
+/* 모바일 환경 소개글 반응형 (세로로 쌓임) */
+@media (max-width: 850px) {
+    .intro-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .intro-left { flex: auto; }
+    .intro-left .section-title, .intro-right { text-align: center; }
+}
+
+/* --- 5-2. 연구 분야 프로젝트 카드 (4단 그리드) --- */
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.section-header h2 {
+    font-size: 1.8rem;
+    color: var(--color-dark-navy);
+    margin-bottom: 10px;
+}
+
+/* 파란색 짧은 가로줄 (디자인 포인트) */
+.divider {
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-primary);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.project-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap; /* 카드가 공간이 부족하면 밑으로 내려감 */
+}
+
+/* 개별 카드 디자인 */
+.project-card {
+    background-color: #ffffff;
+    border: none; /* 기존 테두리 제거 */
+    border-radius: 16px; /* 둥근 모서리 */
+    padding: 40px 30px;
+    flex: 1;
+    min-width: 300px;
+    
+    /* 떠 있는 듯한 은은한 그림자 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
+    transition: transform 0.4s ease, box-shadow 0.4s ease; 
+    
+    display: flex;
+    flex-direction: column;
+}
+
+/* 카드 마우스 오버 효과 (떠오름 + 그림자 진해짐) */
+.project-card:hover {
+    transform: translateY(-12px); 
+    box-shadow: 0 25px 45px rgba(0, 86, 210, 0.12);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.project-card h3 {
+    color: var(--color-dark-navy);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.card-desc {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1; /* 글이 짧아도 하단 태그를 맨 밑으로 밀어줌 */
+}
+
+/* 기술 스택 해시태그 */
+.tech-stack {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.tech-stack span {
+    background-color: var(--color-bg-soft);
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+/* =========================================
+   6. Footer (하단 푸터 영역)
+   - 사이트 맨 아래 연락처 및 주소 정보
 ========================================= */
 .footer {
-    background-color: var(--color-bg-soft); /* 연한 하늘색 배경 */
+    background-color: var(--color-bg-soft);
     color: var(--color-text);
     padding: 50px 0 20px 0;
     font-size: 0.9rem;
@@ -113,23 +398,23 @@ body {
     padding: 0 30px;
 }
 
-/* 상단 3단 레이아웃 (로고, CONTACT, LOCATION) 가로 정렬 */
+/* 상단 3단 레이아웃 (로고, 연락처, 주소) */
 .footer-main-layout {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* 위쪽을 기준으로 정렬 */
+    align-items: flex-start;
     margin-bottom: 40px;
     gap: 40px;
 }
 
-/* 3단 영역을 동일한 비율로 분배 */
+/* 각 영역 1:1:1 비율 분배 */
 .footer-logo-area,
 .footer-contact-area,
 .footer-location-area {
     flex: 1;
 }
 
-/* 임시 로고 박스 디자인 (나중에 이미지로 교체 시 삭제 가능) */
+/* 흰색 로고 박스 */
 .logo-placeholder {
     background-color: #ffffff;
     padding: 15px 25px;
@@ -137,18 +422,15 @@ body {
     display: inline-block;
     border: 1px solid var(--color-border);
 }
-
 .logo-placeholder h2 {
     margin: 0;
     color: var(--color-dark-navy);
     font-size: 1.8rem;
 }
-
 .logo-placeholder span {
     color: var(--color-primary);
 }
 
-/* CONTACT & LOCATION 제목 스타일 */
 .footer-contact-area h3,
 .footer-location-area h3 {
     font-size: 1.05rem;
@@ -156,41 +438,38 @@ body {
     color: var(--color-dark-navy);
     margin-top: 0;
     margin-bottom: 15px;
-    letter-spacing: 0.05em; /* 영문 자간 살짝 넓게 */
+    letter-spacing: 0.05em;
 }
 
-/* 본문 텍스트 간격 조절 */
 .footer-contact-area p,
 .footer-location-area p {
     margin: 8px 0;
     line-height: 1.6;
 }
 
-/* 이메일 링크 디자인 (밑줄) */
+/* 이메일 링크 스타일 */
 .footer-contact-area a {
     color: var(--color-text);
     text-decoration: underline;
-    text-underline-offset: 3px; /* 밑줄이 글자와 너무 붙지 않게 띄움 */
+    text-underline-offset: 3px;
     transition: color 0.2s;
 }
-
 .footer-contact-area a:hover {
     color: var(--color-primary);
 }
 
-/* 하단 카피라이트 영역 (사진처럼 윗줄 추가) */
+/* 맨 밑 카피라이트 (저작권) 표기 */
 .footer-bottom {
-    border-top: 1px solid var(--color-border); /* 윗쪽 경계선 */
+    border-top: 1px solid var(--color-border);
     padding-top: 20px;
     color: #718096;
     font-size: 0.8rem;
 }
-
 .footer-bottom p {
     margin: 0;
 }
 
-/* 모바일 화면 반응형 처리 (세로로 쌓이게) */
+/* 모바일 환경 푸터 반응형 (세로로 쌓임) */
 @media (max-width: 768px) {
     .footer-main-layout {
         flex-direction: column;
@@ -198,83 +477,20 @@ body {
     }
 }
 
-/* 모바일 화면 반응형 */
-@media (max-width: 768px) {
-    .footer-main {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-    }
-    .footer-links-top {
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .footer-bottom {
-        flex-direction: column;
-        gap: 15px;
-        align-items: flex-start;
-    }
-}
-
 /* =========================================
-   5. Hero Section (메인 홈 화면) 스타일
+   7. Scroll Animation (스크롤 등장 효과)
+   - 요소가 부드럽게 나타나는 Apple 스타일 애니메이션
 ========================================= */
-.hero {
-    /* 2번째 로고 기반의 짙은 파란색 그라데이션 배경 */
-    background: linear-gradient(135deg, var(--color-primary) 0%, #002c77 100%);
-    color: #ffffff; /* 짙은 배경이므로 텍스트는 흰색 */
-    height: 30vh; /* 화면 세로 길이의 70%를 차지하도록 설정 */
-    display: flex;
-    justify-content: center; /* 가로 중앙 정렬 */
-    align-items: center; /* 세로 중앙 정렬 */
-    text-align: center; /* 텍스트 자체를 가운데 정렬 */
-    padding: 0 20px;
+/* 애니메이션 시작 전 기본 상태 (투명하고 아래로 50px 내려가 있음) */
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px); 
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    will-change: opacity, transform; /* 브라우저 성능 최적화용 */
 }
 
-.hero-content {
-    max-width: 800px;
-    animation: fadeIn 1s ease-in-out; /* 부드럽게 나타나는 애니메이션 */
-}
-
-.hero-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin: 0 0 10px 0;
-    letter-spacing: -0.02em;
-}
-
-.hero-subtitle {
-    font-size: 1.25rem;
-    font-weight: 300;
-    opacity: 0.9;
-    margin: 0 0 20px 0;
-}
-
-.hero-description {
-    font-size: 1.05rem;
-    font-weight: 400;
-    opacity: 0.75;
-    margin: 0;
-}
-
-/* 텍스트가 부드럽게 나타나는 애니메이션 효과 */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* 모바일 화면 반응형 */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    .hero-subtitle {
-        font-size: 1.1rem;
-    }
+/* 화면에 나타날 때 자바스크립트에 의해 추가되는 클래스 (선명해지고 제자리로 돌아옴) */
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
 }
