@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+
+<title>Recruiting | Cloud Lab</title>
+
+<style>
+
+.recruiting-main {
+    padding-top: 118px;
+}
+
+.recruiting-hero {
+    position: relative;
+    isolation: isolate;
+
+    width: calc(100% - 80px);
+    max-width: 1440px;
+    min-height: calc(100vh - 145px);
+
+    margin: 0 auto 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 48px;
+    background: #ffffff;
+}
+
+.recruiting-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+.recruiting-blob {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(90px);
+    opacity: 0.8;
+
+    animation: recruitingMorph 16s ease-in-out infinite alternate;
+}
+
+.recruit-yellow {
+    width: 52%;
+    height: 75%;
+
+    left: -12%;
+    top: 18%;
+
+    background: rgba(255, 239, 155, 0.70);
+
+    animation-delay: -2s;
+}
+
+.recruit-pink {
+    width: 52%;
+    height: 72%;
+
+    left: 20%;
+    top: 16%;
+
+    background: rgba(247, 215, 239, 0.70);
+
+    animation-delay: -6s;
+}
+
+.recruit-purple {
+    width: 46%;
+    height: 68%;
+
+    left: 46%;
+    top: 20%;
+
+    background: rgba(222, 213, 255, 0.62);
+
+    animation-delay: -10s;
+}
+
+.recruit-blue {
+    width: 48%;
+    height: 78%;
+
+    right: -10%;
+    top: 10%;
+
+    background: rgba(199, 228, 255, 0.72);
+
+    animation-delay: -13s;
+}
+
+.recruiting-hero-content {
+    position: relative;
+    z-index: 3;
+
+    width: 100%;
+    max-width: 1280px;
+
+    padding: 80px 40px;
+
+    text-align: center;
+}
+
+.recruiting-eyebrow {
+    margin: 0 0 28px;
+
+    color: rgba(30, 30, 38, 0.55);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.28em;
+}
+
+.recruiting-title {
+    margin: 0;
+
+    color: #090a0d;
+
+    font-size: clamp(76px, 8.4vw, 138px);
+    font-weight: 700;
+
+    line-height: 0.88;
+    letter-spacing: -0.075em;
+}
+
+.recruiting-title span {
+    display: block;
+}
+
+.recruiting-description {
+    margin: 38px auto 0;
+
+    color: rgba(39, 42, 50, 0.58);
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+.recruiting-guide-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 28px;
+    padding: 15px 23px;
+
+    border: 0;
+    border-radius: 999px;
+
+    background: #0b0b0c;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.recruiting-guide-btn:hover {
+    transform: translateY(-3px);
+
+    background: #18191c;
+}
+
+@keyframes recruitingMorph {
+
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(25px, -15px) scale(1.08);
+    }
+
+    66% {
+        transform: translate(-15px, 20px) scale(1.12);
+    }
+
+    100% {
+        transform: translate(20px, 10px) scale(1.05);
+    }
+}
+
+
+.recruit-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+.recruit-modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.recruit-modal-backdrop {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(35, 43, 57, 0.30);
+
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+}
+
+.recruit-modal-box {
+    position: relative;
+    z-index: 2;
+
+    width: min(780px, 100%);
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    padding: 58px 62px 52px;
+
+    border-radius: 38px;
+
+    background: rgba(255,255,255,0.97);
+
+    box-shadow:
+        0 30px 100px rgba(24, 42, 66, 0.22);
+
+    transform:
+        translateY(25px)
+        scale(0.96);
+
+    transition:
+        transform 0.32s
+        cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.recruit-modal.open .recruit-modal-box {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.recruit-modal-close {
+    position: absolute;
+
+    top: 24px;
+    right: 30px;
+
+    width: 42px;
+    height: 42px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: #111827;
+
+    font-size: 34px;
+    font-weight: 300;
+
+    cursor: pointer;
+}
+
+.recruit-modal-close:hover {
+    background: #f1f5f9;
+}
+
+.recruit-modal-eyebrow {
+    margin: 0 0 25px;
+
+    color: #0b5ea8;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.22em;
+}
+
+.recruit-modal-title {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 52px;
+    font-weight: 700;
+
+    line-height: 1.1;
+    letter-spacing: -0.045em;
+}
+
+.recruit-modal-description {
+    margin: 22px 0 34px;
+
+    color: #6c7687;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+.recruit-modal-list {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    border-top: 1px solid #e8edf3;
+}
+
+.recruit-modal-list li {
+    display: grid;
+
+    grid-template-columns: 45px 1fr;
+
+    gap: 18px;
+
+    padding: 21px 0;
+
+    border-bottom: 1px solid #e8edf3;
+}
+
+.recruit-modal-number {
+    padding-top: 3px;
+
+    color: #0b5ea8;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.recruit-modal-list strong {
+    display: block;
+
+    color: #172033;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.recruit-modal-list p {
+    margin: 7px 0 0;
+
+    color: #7a8494;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+.recruit-modal-apply {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+    padding: 14px 23px;
+
+    border-radius: 999px;
+
+    background: #17365e;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.recruit-modal-apply:hover {
+    transform: translateY(-2px);
+
+    background: #0b5ea8;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+@media (max-width: 900px) {
+
+    .recruiting-hero {
+        width: calc(100% - 28px);
+
+        min-height: calc(100vh - 125px);
+
+        border-radius: 34px;
+    }
+
+    .recruiting-title {
+        font-size: clamp(58px, 12vw, 92px);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .recruit-modal {
+        padding: 16px;
+    }
+
+    .recruit-modal-box {
+        padding: 52px 26px 38px;
+
+        border-radius: 28px;
+    }
+
+    .recruit-modal-title {
+        font-size: 39px;
+    }
+
+    .recruit-modal-list li {
+        grid-template-columns: 32px 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body class="recruiting-page">
+
+
+<header class="site-header">
+
+    <a href="index.html" class="brand">
+
+        <span class="brand-symbol">
+            <span class="brand-dot dot-yellow"></span>
+            <span class="brand-dot dot-blue"></span>
+        </span>
+
+        <span class="brand-copy">
+            <strong>CLOUD LAB</strong>
+        </span>
+
+    </a>
+
+    <button class="menu-toggle" aria-label="메뉴 열기">
+        ☰
+    </button>
+
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="activities.html">Activities</a>
+        <a href="members.html">Members</a>
+        <a href="recruiting.html">Recruiting</a>
+        <a href="faq.html">FAQ</a>
+    </nav>
+
+</header>
+
+
+
+<main class="recruiting-main">
+
+
+<section class="recruiting-hero">
+
+
+    <div class="recruiting-gradient">
+
+        <div class="recruiting-blob recruit-yellow"></div>
+
+        <div class="recruiting-blob recruit-pink"></div>
+
+        <div class="recruiting-blob recruit-purple"></div>
+
+        <div class="recruiting-blob recruit-blue"></div>
+
+    </div>
+
+
+    <div class="recruiting-hero-content reveal">
+
+
+        <p class="recruiting-eyebrow">
+            04 · RECRUITING
+        </p>
+
+
+        <h1 class="recruiting-title">
+
+            <span>
+                Your next
+            </span>
+
+            <span>
+                project starts here.
+            </span>
+
+        </h1>
+
+
+        <p class="recruiting-description">
+
+            배우고 싶은 마음 하나면 충분합니다.
+
+            <br>
+
+            Cloud Lab의 다음 멤버가 되어보세요.
+
+        </p>
+
+
+        <button
+            class="recruiting-guide-btn"
+            id="openRecruitModal">
+
+            Recruiting Guide
+
+            <span>↗</span>
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<section class="detail-section">
+
+    <div class="recruit-panel reveal">
+
+        <div>
+
+            <p class="section-kicker">
+                JOIN CLOUD LAB
+            </p>
+
+            <h2>
+                2026 Recruiting
+            </h2>
+
+        </div>
+
+
+        <div>
+
+            <dl class="recruit-list">
+
+                <div>
+                    <dt>모집 대상</dt>
+                    <dd>삼육대학교 재학생</dd>
+                </div>
+
+                <div>
+                    <dt>모집 분야</dt>
+                    <dd>
+                        Cloud · Web · Data · Security
+                    </dd>
+                </div>
+
+                <div>
+                    <dt>지원 기간</dt>
+                    <dd>추후 공지</dd>
+                </div>
+
+                <div>
+                    <dt>지원 방법</dt>
+                    <dd>지원 폼 링크 추후 추가</dd>
+                </div>
+
+            </dl>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<div
+    class="recruit-modal"
+    id="recruitModal">
+
+
+    <div class="recruit-modal-backdrop"></div>
+
+
+    <div class="recruit-modal-box">
+
+
+        <button
+            class="recruit-modal-close"
+            id="closeRecruitModal">
+
+            ×
+
+        </button>
+
+
+        <p class="recruit-modal-eyebrow">
+            CLOUD LAB RECRUITING
+        </p>
+
+
+        <h2 class="recruit-modal-title">
+            우리가 원하는 인재상
+        </h2>
+
+
+        <p class="recruit-modal-description">
+
+            Cloud Lab은 현재의 기술 경험보다
+            함께 배우고 성장하려는 태도를 중요하게 생각합니다.
+
+        </p>
+
+
+
+        <ul class="recruit-modal-list">
+
+
+            <li>
+
+                <span class="recruit-modal-number">
+                    01
+                </span>
+
+                <div>
+
+                    <strong>
+                        배움에 적극적인 사람
+                    </strong>
+
+                    <p>
+                        새로운 클라우드 기술과 개발 지식을
+                        배우고 직접 경험해보고 싶은 사람
+                    </p>
+
+                </div>
+
+            </li>
+
+
+
+            <li>
+
+                <span class="recruit-modal-number">
+                    02
+                </span>
+
+                <div>
+
+                    <strong>
+                        함께 소통할 수 있는 사람
+                    </strong>
+
+                    <p>
+                        자신의 의견을 공유하고
+                        팀원들의 의견을 존중할 수 있는 사람
+                    </p>
+
+                </div>
+
+            </li>
+
+
+
+            <li>
+
+                <span class="recruit-modal-number">
+                    03
+                </span>
+
+                <div>
+
+                    <strong>
+                        책임감을 가지고 참여하는 사람
+                    </strong>
+
+                    <p>
+                        맡은 역할과 프로젝트에
+                        꾸준히 참여할 수 있는 사람
+                    </p>
+
+                </div>
+
+            </li>
+
+
+
+            <li>
+
+                <span class="recruit-modal-number">
+                    04
+                </span>
+
+                <div>
+
+                    <strong>
+                        함께 성장하고 싶은 사람
+                    </strong>
+
+                    <p>
+                        현재의 실력보다 앞으로의 성장을
+                        더 중요하게 생각하는 사람
+                    </p>
+
+                </div>
+
+            </li>
+
+
+        </ul>
+
+
+        <a
+            href="#"
+            class="recruit-modal-apply">
+
+            Apply
+
+            <span>↗</span>
+
+        </a>
+
+
+    </div>
+
+</div>
+
+
+
+<footer class="site-footer">
+
+    <div>
+
+        <strong>
+            Cloud Lab
+        </strong>
+
+        <small>
+            Sahmyook University
+        </small>
+
+    </div>
+
+    <p>
+        Learn · Build · Connect
+    </p>
+
+</footer>
+
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+const openRecruitModal =
+    document.getElementById("openRecruitModal");
+
+const recruitModal =
+    document.getElementById("recruitModal");
+
+const closeRecruitModal =
+    document.getElementById("closeRecruitModal");
+
+
+function openModal() {
+
+    recruitModal.classList.add("open");
+
+    document.body.classList.add("modal-open");
+
+}
+
+
+function closeModal() {
+
+    recruitModal.classList.remove("open");
+
+    document.body.classList.remove("modal-open");
+
+}
+
+
+openRecruitModal.addEventListener(
+    "click",
+    openModal
+);
+
+
+closeRecruitModal.addEventListener(
+    "click",
+    closeModal
+);
+
+
+recruitModal.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target.classList.contains(
+                "recruit-modal-backdrop"
+            )
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>
