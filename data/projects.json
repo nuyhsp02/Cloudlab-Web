@@ -1,0 +1,50 @@
+{
+  "courses": [
+    {
+      "title": "KakaoCloud Beginner Track",
+      "category": "BEGINNER",
+      "description": "KakaoCloud를 처음 접하는 학습자가 콘솔과 주요 서비스의 흐름을 익힐 수 있도록 구성된 입문 실습 트랙입니다.",
+      "url": "https://github.com/kakaocloud-edu/tutorial/tree/main/KakaoCloud%20Beginner%20Track"
+    },
+    {
+      "title": "Essential Basic Course",
+      "category": "FOUNDATION",
+      "description": "KakaoCloud 핵심 서비스를 직접 구성하며 클라우드 인프라의 기본 개념과 리소스 운용 흐름을 익히는 기초 실습 과정입니다.",
+      "url": "https://github.com/kakaocloud-edu/tutorial/tree/main/EssentialBasicCourse"
+    },
+    {
+      "title": "Advanced Course",
+      "category": "INFRASTRUCTURE",
+      "description": "MSA와 Kubernetes를 중심으로 네트워크, 배포, 확장 등 한 단계 더 깊은 클라우드 인프라 구성을 실습하는 심화 과정입니다.",
+      "url": "https://github.com/kakaocloud-edu/tutorial/tree/main/AdvancedCourse"
+    },
+    {
+      "title": "Data Analyze Course",
+      "category": "DATA",
+      "description": "Kafka와 Object Storage를 포함한 데이터 수집·적재·분석 흐름을 연결하며 실시간 데이터 파이프라인을 구성하는 과정을 다룹니다.",
+      "url": "https://github.com/kakaocloud-edu/tutorial/tree/main/DataAnalyzeCourse"
+    },
+    {
+      "title": "Kubeflow",
+      "category": "MLOPS",
+      "description": "Kubeflow 환경에서 모델 학습, 파이프라인 구성, 서빙과 하이퍼파라미터 튜닝 등 MLOps 워크플로우를 실습합니다.",
+      "url": "https://github.com/kakaocloud-edu/tutorial/tree/main/Kubeflow"
+    },
+    {
+      "title": "Section Demo & Lab",
+      "category": "DEMO & LAB",
+      "description": "서비스와 기능 단위의 Demo & Lab 자료를 모아 필요한 실습을 빠르게 찾아보고 개별 기능을 직접 확인할 수 있는 섹션입니다.",
+      "url": "https://github.com/kakaocloud-edu/tutorial/tree/main/Section%20Demo%20%26%20Lab"
+    }
+  ],
+  "labProjects": [
+    {
+      "title": "SU Cloud",
+      "subtitle": "On-Premise Private Cloud",
+      "status": "IN PROGRESS",
+      "description": "교내 유휴 서버를 활용해 OpenStack 기반 프라이빗 클라우드를 구축하고 있습니다. 학생들이 비용 부담 없이 실습할 수 있는 가상화 환경을 제공하는 것이 목표입니다.",
+      "tags": ["OpenStack", "On-Premise", "Private Cloud"],
+      "url": ""
+    }
+  ]
+}

@@ -4,6 +4,7 @@ const observer = new IntersectionObserver(
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("on");
+                observer.unobserve(entry.target);
             }
         });
     },
@@ -12,9 +13,17 @@ const observer = new IntersectionObserver(
     }
 );
 
-document.querySelectorAll(".reveal").forEach((element) => {
-    observer.observe(element);
-});
+function observeRevealElements(root = document) {
+    root.querySelectorAll(".reveal").forEach((element) => {
+        if (!element.dataset.revealObserved) {
+            element.dataset.revealObserved = "true";
+            observer.observe(element);
+        }
+    });
+}
+
+window.observeRevealElements = observeRevealElements;
+observeRevealElements();
 
 // 2. 모바일 메뉴 토글
 const menuToggle = document.querySelector(".menu-toggle");
