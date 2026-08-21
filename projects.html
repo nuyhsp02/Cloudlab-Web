@@ -7,25 +7,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-
-    <title>Cloud Lab | Sahmyook University</title>
+    <title>Projects | Cloud Lab</title>
 </head>
-<body class="home-page">
-
+<body class="projects-page">
     <header class="site-header">
         <a href="index.html" class="brand">
             <span class="brand-symbol">
                 <span class="brand-dot dot-yellow"></span>
                 <span class="brand-dot dot-blue"></span>
             </span>
-            <span class="brand-copy">
-                <strong>CLOUD LAB</strong>
-            </span>
+            <span class="brand-copy"><strong>CLOUD LAB</strong></span>
         </a>
 
-        <button class="menu-toggle" aria-label="메뉴 열기">
-            ☰
-        </button>
+        <button class="menu-toggle" aria-label="메뉴 열기">☰</button>
 
         <nav class="nav">
             <a href="index.html"><span class="nav-en">Home</span><span class="nav-ko">홈</span></a>
@@ -38,51 +32,44 @@
         </nav>
     </header>
 
-    <main class="home-main">
-        <section class="home-hero">
-            <div class="home-gradient" aria-hidden="true">
-                <span class="home-blob blob-yellow"></span>
-                <span class="home-blob blob-pink"></span>
-                <span class="home-blob blob-blue"></span>
-                <span class="home-blob blob-syu"></span>
-            </div>
+    <main class="page-main">
+        <section class="page-hero reveal">
+            <p class="eyebrow">PROJECTS</p>
+            <h1>Learn.<br>Build.<br>Apply.</h1>
+            <p>공식 교육 과정을 만들고 직접 실습하며, 배운 기술을 실제 인프라 프로젝트로 확장합니다.</p>
+        </section>
 
-            <div class="hero-center reveal">
-                <p class="home-eyebrow">SAHMYOOK UNIVERSITY</p>
-
-                <h1 class="home-title">
-                    <span class="title-cloud">Cloud.</span>
-                    <span class="title-connect">
-                        <span class="typing-connect"></span><span class="typing-cursor">|</span>
-                    </span>
-                    <span class="title-create">
-                        <span class="typing-create"></span>
-                    </span>
-                </h1>
-
-                <p class="home-description">
-                    클라우드를 배우고, 함께 만들고,<br>
-                    더 넓은 기술 세계로 연결되는 삼육대학교 Cloud Lab.
-                </p>
-
-                <div class="home-actions">
-                    <a class="home-primary-btn" href="about.html">
-                        About Cloud Lab <span>→</span>
-                    </a>
-                    <a class="home-secondary-btn" href="projects.html">See Projects</a>
+        <section class="detail-section projects-content">
+            <div class="project-section-head reveal">
+                <div>
+                    <p class="section-kicker">EDUCATION TRACKS</p>
+                    <h2>공식 교육 과정을<br>만들고, 직접 실습합니다.</h2>
                 </div>
+                <p>Kakao Enterprise와 협력해 KakaoCloud 공식 교육 저장소의 실습 코스를 제작했습니다. 각 과정은 세부 Lab을 나열하기보다 무엇을 배우고 어떤 흐름을 경험하는지 핵심만 소개합니다.</p>
             </div>
+
+            <div id="course-grid" class="course-grid" aria-live="polite"></div>
+
+            <div class="project-divider"></div>
+
+            <div class="project-section-head reveal">
+                <div>
+                    <p class="section-kicker">LAB PROJECTS</p>
+                    <h2>배운 기술을<br>실제 환경으로.</h2>
+                </div>
+                <p>교육과 실습에서 끝나지 않고, 교내 환경에서 직접 설계·구축·운영하는 프로젝트로 경험을 확장합니다.</p>
+            </div>
+
+            <div id="lab-project-list" class="lab-project-list" aria-live="polite"></div>
         </section>
     </main>
 
     <footer class="site-footer">
-        <div>
-            <strong>Cloud Lab</strong>
-            <small>Sahmyook University</small>
-        </div>
+        <div><strong>Cloud Lab</strong><small>Sahmyook University</small></div>
         <p>Learn · Build · Connect</p>
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/projects.js"></script>
 </body>
 </html>

@@ -1,0 +1,23 @@
+[
+  {
+    "title": "End-to-End Latency Optimization and Resource Trade-off Analysis in Large-Scale Real-Time Data Pipelines",
+    "authors": "Jiman Cha, Choong-hee Cho",
+    "venue": "한국컴퓨터정보학회 논문지 (JKSCI), Vol. 31, No. 5",
+    "year": "2026",
+    "url": ""
+  },
+  {
+    "title": "HAL: An Encoding Method for Efficient Log Data Pipelines",
+    "authors": "Min-gi Lee, Choong-hee Cho",
+    "venue": "한국컴퓨터정보학회 논문지 (JKSCI), Vol. 31, No. 6",
+    "year": "2026",
+    "url": ""
+  },
+  {
+    "title": "클라우드 자원 수명주기 관리를 위한 통합 프레임워크의 설계 및 구현",
+    "authors": "박준우, 김재현, 안현, 이성현, 이예승, 조충희",
+    "venue": "게재지·권호 확인 중",
+    "year": "",
+    "url": ""
+  }
+]
